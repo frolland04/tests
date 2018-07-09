@@ -13,7 +13,7 @@ import time
 
 
 # Quelques fonctions
-def ma_fonction(a):
+def ma_fonction(a=0):
     """Petite fonction gentille"""
     return 'Et oui!' + ' a=' + str(a)
 
@@ -30,4 +30,16 @@ if __name__ == '__main__':
     print('Bonjour', s)
 
     print(ma_fonction(a=2))
+    print(ma_fonction())
 
+    input('(Appuyez sur une touche...)')
+
+    print('**** Symboles : ****')
+    print('Le type de "dir()" est', type(dir))
+    print('Le type de retour de "dir()" est', type(dir()))
+
+    print(dir())
+    print('Le contenu est :')
+
+    for e in dir():
+        print(e)
