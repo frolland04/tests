@@ -1,7 +1,9 @@
 import flask
 import flask_bootstrap
 
+
 app = flask.Flask(__name__)
+flask_bootstrap.Bootstrap(app)
 
 
 @app.route('/')
@@ -40,4 +42,4 @@ def page_not_found(error) -> str:
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
