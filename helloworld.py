@@ -36,7 +36,7 @@ if __name__ == '__main__':
     print(ma_fonction(a=aa))
     print(ma_fonction())
 
-    print('aa=' + str(aa))  # 'aa' non modifié par 'ma_fonction()' !
+    print('aa=' + str(aa))  # immutable 'aa' non modifié par 'ma_fonction()' ! (nombres, chaînes, tuples)
 
     input('(Appuyez sur une touche...)')
 
@@ -49,3 +49,22 @@ if __name__ == '__main__':
 
     for e in dir():
         print(e)
+
+    input('(Appuyez sur une touche...)')
+
+    phrase = 'La vie est belle, la belle est douce, la vie est douce.'
+    print(phrase)
+
+    phrase = phrase.replace('.', '')
+    phrase = phrase.replace(',', '')
+    phrase = phrase.lower()
+    print(phrase)
+
+    tokens = phrase.split(' ')
+    print(tokens)
+    tokens.sort()
+    for t in tokens:
+        print(t, tokens.count(t))
+    print(tokens)
+
+    print("C'est fini !")
