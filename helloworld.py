@@ -15,6 +15,7 @@ import time
 # Quelques fonctions
 def ma_fonction(a=0):
     """Petite fonction gentille"""
+    a += 1
     return 'Et oui!' + ' a=' + str(a)
 
 
@@ -29,8 +30,13 @@ if __name__ == '__main__':
     s = input('Quel est ton prénom?\n')
     print('Bonjour', s)
 
-    print(ma_fonction(a=2))
+    aa = 2
+    print('aa=' + str(aa))
+
+    print(ma_fonction(a=aa))
     print(ma_fonction())
+
+    print('aa=' + str(aa))  # 'aa' non modifié par 'ma_fonction()' !
 
     input('(Appuyez sur une touche...)')
 
