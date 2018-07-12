@@ -23,16 +23,20 @@ def ma_fonction(a=0):
 if __name__ == '__main__':
     """Code à exécuter"""
 
+    # Quelques informations sur le runtime Python
     print(sys.api_version, sys.version)
     print(time.asctime())
 
+    # Affichage et entrée au clavier
     print('**** Hello Word! ****')
     s = input('Quel est ton prénom?\n')
     print('Bonjour', s)
 
     aa = 2
-    print('aa=' + str(aa))
+    print('aa=', aa)  # Plusieurs choses à afficher
+    print('aa=' + str(aa))  # Concaténation de chaînes de caractères
 
+    # Appels de fonctions
     print(ma_fonction(a=aa))
     print(ma_fonction())
 
@@ -63,8 +67,16 @@ if __name__ == '__main__':
     tokens = phrase.split(' ')
     print(tokens)
     tokens.sort()
+
+    m = {}
     for t in tokens:
-        print(t, tokens.count(t))
-    print(tokens)
+        if t in m:
+            m[t] += 1
+        else:
+            m[t] = 1
+    print(m)
+
+    for t in m:
+        print(t, tokens.count(t), '/', len(tokens))
 
     print("C'est fini !")
