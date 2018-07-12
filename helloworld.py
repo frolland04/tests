@@ -57,7 +57,7 @@ if __name__ == '__main__':
     input('(Appuyez sur une touche...)')
 
     phrase = 'La vie est belle, la belle est douce, la vie est douce.'
-    print('une chaîne', phrase)
+    print('une chaîne ->', phrase)
 
     # Modifications d'une chaîne de caractères
     phrase = phrase.replace('.', '')
@@ -67,7 +67,7 @@ if __name__ == '__main__':
 
     # Découpage en mots puis tri alpha
     tokens = phrase.split(' ')
-    print('une liste', tokens)
+    print('une liste ->', tokens)
     tokens.sort()
 
     # Un dict. pour comptabiliser les répétitions
@@ -77,7 +77,7 @@ if __name__ == '__main__':
             m[t] += 1
         else:
             m[t] = 1
-    print('un dict.', m)
+    print('un dict. ->', m)
 
     for t in m:
         print(t, tokens.count(t), '/', len(tokens))
