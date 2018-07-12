@@ -19,6 +19,26 @@ def ma_fonction(a=0):
     return 'Et oui!' + ' a=' + str(a) + '(je ne peux pas modifier l\'argument effectif immuable)'
 
 
+def seconde_fonction(a=[]):
+    """Petite fonction encore plus gentille"""
+    a.append(1000)
+    a.append('Les listes ne sont pas immuables, les listes en argument sont donc modifiables')
+    return a
+
+
+def jeu_parametres(*arguments) -> None:
+    """
+    On peut aussi jouer avec les paramètres d'une fonction,
+    que l'on peut capturer dans un tuple.
+    Et aussi spécifier le type de retour.
+    """
+    print('jeu_parametres', arguments)
+    for p in arguments:
+        print(p, type(p))
+
+    return
+
+
 # On commence par là
 if __name__ == '__main__':
     """Code à exécuter"""
@@ -32,15 +52,31 @@ if __name__ == '__main__':
     s = input('Quel est ton prénom?\n')
     print('Bonjour', s)
 
+    # Jouons avec les nombres, les chaînes et les tuples
     aa = 2
     print('aa=', aa)  # Plusieurs choses à afficher
     print('aa=' + str(aa))  # Concaténation de chaînes de caractères
 
-    # Appels de fonctions
+    # Appels de fonctions sur immuables
     print(ma_fonction(a=aa))
     print(ma_fonction())
 
     print('aa=' + str(aa))  # immuable 'aa' non modifié par 'ma_fonction()' ! (nombres, chaînes, tuples)
+
+    # Les paramètres d'une fonction sont transportés par un tuple
+    jeu_parametres()
+    a = 0
+    b = 10
+    c = 5.0
+    jeu_parametres(a, b, c)
+
+    # Jouons aussi avec les listes (non immuables)
+    aaa = [2, "oui"]
+    print('aaa=', aaa)
+    print('retour ->', seconde_fonction(a=aaa)) # liste 'aaa' modifiée par la fonction !
+    print('aaa=', aaa)
+    for i, e in enumerate(aaa):
+        print(i, '->', e)
 
     input('(Appuyez sur une touche...)')
 
