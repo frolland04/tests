@@ -16,7 +16,7 @@ import time
 def ma_fonction(a=0):
     """Petite fonction gentille"""
     a += 1
-    return 'Et oui!' + ' a=' + str(a)
+    return 'Et oui!' + ' a=' + str(a) + '(je ne peux pas modifier l\'argument effectif immuable)'
 
 
 # On commence par là
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     print(ma_fonction(a=aa))
     print(ma_fonction())
 
-    print('aa=' + str(aa))  # immutable 'aa' non modifié par 'ma_fonction()' ! (nombres, chaînes, tuples)
+    print('aa=' + str(aa))  # immuable 'aa' non modifié par 'ma_fonction()' ! (nombres, chaînes, tuples)
 
     input('(Appuyez sur une touche...)')
 
@@ -57,26 +57,29 @@ if __name__ == '__main__':
     input('(Appuyez sur une touche...)')
 
     phrase = 'La vie est belle, la belle est douce, la vie est douce.'
-    print(phrase)
+    print('une chaîne', phrase)
 
+    # Modifications d'une chaîne de caractères
     phrase = phrase.replace('.', '')
     phrase = phrase.replace(',', '')
     phrase = phrase.lower()
     print(phrase)
 
+    # Découpage en mots puis tri alpha
     tokens = phrase.split(' ')
-    print(tokens)
+    print('une liste', tokens)
     tokens.sort()
 
+    # Un dict. pour comptabiliser les répétitions
     m = {}
     for t in tokens:
         if t in m:
             m[t] += 1
         else:
             m[t] = 1
-    print(m)
+    print('un dict.', m)
 
     for t in m:
         print(t, tokens.count(t), '/', len(tokens))
 
-    print("C'est fini !")
+    print("*** C'est fini pour aujourd'hui ! ***")
