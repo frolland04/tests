@@ -16,7 +16,7 @@ import time
 def ma_fonction(a=0):
     """Petite fonction gentille"""
     a += 1
-    return 'Et oui!' + ' a=' + str(a) + '(je ne peux pas modifier l\'argument effectif immuable)'
+    return 'Et oui!' + ' a=' + str(a) + ' (je ne peux pas modifier l\'argument effectif immuable)'
 
 
 def seconde_fonction(a=[]):
@@ -37,6 +37,30 @@ def jeu_parametres(*arguments) -> None:
         print(p, type(p))
 
     return
+
+
+def coucou(ss, j=0) -> str:
+    """Fonction basique qui retourne une chaîne de caractères formées par 'La phrase ... coucou ...'
+    et la chaîne 'ss' et l'entier j passés en arguments. Les types sont vérifiés.
+    """
+    if type(ss) is str and type(j) is int:
+        return "La phrase pour {0} est: 'coucou {0}, comment ça va?' ({1})".format(ss, j)
+    else:
+        return 'KO'
+
+
+def enter_exit(f):
+    """Un petit décorateur de fonction"""
+    def wrapper(*args):
+        """
+        La fonction wrapper est interne à enter_exit()
+        Note : très important, elle accède à tout ce qui est dans enter_exit() !
+        """
+        print('ENTER =>', f.__name__, args)
+        obj = f(*args)
+        print('EXIT <=', f.__name__, ':', obj, type(obj))
+        return obj
+    return wrapper
 
 
 # On commence par là
@@ -70,10 +94,19 @@ if __name__ == '__main__':
     c = 5.0
     jeu_parametres(a, b, c)
 
+    # Fonctions en argument, fonctions internes et décorateurs
+    phrase_coucou_a_une_personne = coucou
+    print(phrase_coucou_a_une_personne(s))
+    ss = ma_fonction(4)
+    print(ss)
+    f2 = enter_exit(ma_fonction)
+    ss = f2(4)
+    print(ss)
+
     # Jouons aussi avec les listes (non immuables)
     aaa = [2, "oui"]
     print('aaa=', aaa)
-    print('retour ->', seconde_fonction(a=aaa)) # liste 'aaa' modifiée par la fonction !
+    print('retour ->', seconde_fonction(a=aaa))  # liste 'aaa' modifiée par la fonction !
     print('aaa=', aaa)
     for i, e in enumerate(aaa):
         print(i, '->', e)
