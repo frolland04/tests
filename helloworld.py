@@ -54,7 +54,7 @@ def enter_exit(f):
     def wrapper(*args):
         """
         La fonction wrapper est interne à enter_exit()
-        Note : très important, elle accède à tout ce qui est dans enter_exit() !
+        Note : très important, elle accède à tout ce qui est dans enter_exit(), y compris les paramètres !
         """
         print('ENTER =>', f.__name__, args)
         obj = f(*args)
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     print('aaa=', aaa)
     print('retour ->', seconde_fonction(a=aaa))  # liste 'aaa' modifiée par la fonction !
     print('aaa=', aaa)
-    for i, e in enumerate(aaa):
+    for i, e in enumerate(aaa):  # Enumérer les éléments d'une liste
         print(i, '->', e)
 
     input('(Appuyez sur une touche...)')
