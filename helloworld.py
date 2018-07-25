@@ -16,7 +16,7 @@ import time
 def ma_fonction(a=0):
     """Petite fonction gentille"""
     a += 1
-    return 'Et oui!' + ' a=' + str(a) + ' (je ne peux pas modifier l\'argument effectif immuable)'
+    return "ma_fonction: " + 'Et oui!' + ' a=' + str(a) + ' (je ne peux pas modifier l\'argument effectif si c\'est un immuable)'
 
 
 def seconde_fonction(a=[]):
@@ -32,7 +32,7 @@ def jeu_parametres(*arguments) -> None:
     que l'on peut capturer dans un tuple.
     Et aussi spécifier le type de retour.
     """
-    print('jeu_parametres', arguments)
+    print('jeu_parametres: arguments=', arguments)
     for p in arguments:
         print(p, type(p))
 
@@ -75,17 +75,19 @@ if __name__ == '__main__':
     print('**** Hello Word! ****')
     s = input('Quel est ton prénom?\n')
     print('Bonjour', s)
+    print('')
 
     # Jouons avec les nombres, les chaînes et les tuples
     aa = 2
-    print('aa=', aa)  # Plusieurs choses à afficher
-    print('aa=' + str(aa))  # Concaténation de chaînes de caractères
+    print('Avant: aa=', aa)  # Plusieurs choses à afficher
+    print('Avant: aa=' + str(aa))  # Concaténation de chaînes de caractères
 
     # Appels de fonctions sur immuables
     print(ma_fonction(a=aa))
     print(ma_fonction())
 
-    print('aa=' + str(aa))  # immuable 'aa' non modifié par 'ma_fonction()' ! (nombres, chaînes, tuples)
+    print('Après: aa=' + str(aa))  # immuable 'aa' non modifié par 'ma_fonction()' ! (nombres, chaînes, tuples)
+    print('')
 
     # Les paramètres d'une fonction sont transportés par un tuple
     jeu_parametres()
@@ -93,15 +95,19 @@ if __name__ == '__main__':
     b = 10
     c = 5.0
     jeu_parametres(a, b, c)
+    print('')
 
     # Fonctions en argument, fonctions internes et décorateurs
     phrase_coucou_a_une_personne = coucou
     print(phrase_coucou_a_une_personne(s))
     ss = ma_fonction(4)
     print(ss)
+    print('')
+
     f2 = enter_exit(ma_fonction)
     ss = f2(4)
     print(ss)
+    print('')
 
     # Jouons aussi avec les listes (non immuables)
     aaa = [2, "oui"]
