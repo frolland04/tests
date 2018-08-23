@@ -103,7 +103,7 @@ if __name__ == "__main__":
     for s in resultats:
         print('->', s)
         obj = urllib.request.urlopen(s)
-        print(type(obj), obj.)
+        print(type(obj), obj)
         body = obj.read()
         print(type(body), len(body))
 
