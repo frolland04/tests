@@ -6,6 +6,9 @@ from bs4 import BeautifulSoup
 import urllib.request
 import urllib.error
 import re
+import os, glob
+import browser_cookie3
+import wget  # DEBUG!
 
 
 def fouine(a, links):
@@ -80,5 +83,28 @@ if __name__ == "__main__":
     fichier_resultats.close()
     fichier_html.close()
 
+    print('Récupération ...')
 
+    # Téléchargement des URLs retenues dans un dossier dédié
+    dossier_sauve = os.getcwd() + '/downloads'
+    if os.path.exists(dossier_sauve):
+        fichiers = glob.glob(dossier_sauve + '/*')
+        for f in fichiers:
+            os.remove(f)
+        os.rmdir(dossier_sauve)
 
+    os.mkdir(dossier_sauve)
+
+    cj = browser_cookie3.firefox()
+    print(cj)
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+    urllib.request.install_opener(opener)
+
+    for s in resultats:
+        print('->', s)
+        obj = urllib.request.urlopen(s)
+        print(type(obj), obj)
+        body = obj.read()
+        print(type(body), len(body))
+
+        wget.download(s,dossier_sauve)
