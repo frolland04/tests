@@ -3,6 +3,7 @@ Je les mets sous forme de programme pour s'en souvenir facilement
 """
 
 import sys
+import datetime
 
 
 # Quelques informations
@@ -103,5 +104,46 @@ if __name__ == '__main__':
         print("""10 toto {TEST_INT}""".format_map(tags2))
     except:
         print('10 FAILED!')
+
+    try:
+        print("""11 toto {:5.1f}/{:5.1f}""".format(2, 3))
+    except:
+        print('11 FAILED!')
+
+    try:
+        print("""12 toto {:d}/{:s}""".format(round(2), 'toto'))
+    except:
+        print('12 FAILED!')
+
+    try:
+        ts = datetime.datetime.now()
+        print("""12 toto {:d}/{:s}""".format(round(2), ts.strftime('%y-%m-%d')))
+    except:
+        print('12 FAILED!')
+
+    try:
+        ts = datetime.datetime.now()
+        print("""13 toto %s,%s""" % (ts, 4))
+    except:
+        print('13 FAILED!')
+
+    try:
+        ts = datetime.datetime.now()
+        print("""14 toto {:s}""".format(str(ts)))
+    except:
+        print('14 FAILED!')
+
+    try:
+        val = 12.8503
+        val2 = round(val, 2)
+        print("""15 toto {:.2f} {:f}""".format(val, val2))
+    except:
+        print('15 FAILED!')
+
+    try:
+        val = 1025.42
+        print("""16 toto {:010.3f}""".format(val))
+    except:
+        print('16 FAILED!')
 
     print('FIN.')
