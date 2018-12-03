@@ -14,7 +14,7 @@ function update_i()
     var si = document.getElementById('si');
     si.innerHTML = i;
 
-    setTimeout(update_i, 400);
+    setTimeout(update_i, 200);
 }
 
 function reset_i()
