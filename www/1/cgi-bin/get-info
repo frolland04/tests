@@ -1,0 +1,18 @@
+#!/bin/sh
+printf '\r\n\r\n'
+printf '<pre>'
+uname -a
+printf '</pre>'
+printf '<br><br>'
+printf '<pre>'
+free
+printf '</pre>'
+printf '<br><br>'
+printf '<div>'
+printf '<pre>'
+ps
+printf '</pre>'
+printf '</div>'
+
+
+
