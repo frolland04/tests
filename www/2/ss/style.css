@@ -1,0 +1,21 @@
+/* style.css */
+
+button
+{
+    padding: 15px 32px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+h1
+{
+    color: grey;
+    font-size: 40px;
+    text-decoration: underline overline;
+}
+
+p
+{
+    color: black;
+    font-size: 20px;
+}
