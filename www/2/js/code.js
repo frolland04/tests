@@ -1,5 +1,7 @@
+// *** code.js ***
 // Ici c'est la place du code Javascript
 // de la jolie page.
+
 var i = 0;
 
 window.onload = function()
