@@ -13,12 +13,12 @@
 
     <!-- Ici les boutons du menu intégré -->
     <hr>
-    <button onclick="view('p1.html')">Page 1</button>
-    <button onclick="view('p2.html')">Page 2</button>
-    <button onclick="view('p3.html')">Page 3</button>
-    <button onclick="view('p4.html')">Page 4</button>
-    <button onclick="view('p5.html')">Page 5</button>
-    <button onclick="view('p6.html')">Page 6</button>
+    <button id="b1" onclick="view('p1.html')">Page 1</button>
+    <button id="b2" onclick="view('p2.html')">Page 2</button>
+    <button id="b3" onclick="view('p3.html')">Page 3</button>
+    <button id="b4" onclick="view('p4.html')">Page 4</button>
+    <button id="b5" onclick="view('p5.html')">Page 5</button>
+    <button id="b6" onclick="view('p6.html')">Page 6</button>
     <hr>
 
     <!-- Ici la zone d'affichage de la page choisie -->
@@ -28,5 +28,12 @@
 
     <!-- Sans oublier les codes Javascript associés -->
     <script src="js/code.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function()
+        {
+            // Elément du menu ouvert dès le début!
+            document.getElementById("b5").click();
+        }
+    </script>
 </body>
 </html>
