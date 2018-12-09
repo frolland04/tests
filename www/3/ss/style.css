@@ -21,3 +21,26 @@ p
     color: black;
     font-size: 20px;
 }
+
+#liste_navig
+{
+    list-style: none;
+}
+
+#liste_navig li
+{
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid grey;
+    margin-bottom: 1px;
+    background: lightgrey;
+    width: 100px;
+    height: 40px;
+}
+
+#liste_navig li a
+{
+    display: block;
+    text-decoration: none;
+    padding: 8px 0;
+}
