@@ -10,14 +10,19 @@
 <body>
     <h1>Bienvenue ici !</h1>
     <p>Le joli texte de cette gentille petite page.</p>
+
+    <!-- Ici les boutons du menu intégré -->
     <hr>
-    <button id="p1" onClick="p1()">Page 1</button>
-    <button id="p2" onClick="p2()">Page 2</button>
-    <button id="p3" onClick="p3()">Page 3</button>
-    <button id="p4" onClick="p4()">Page 4</button>
-    <button id="p5" onClick="p5()">Page 5</button>
+    <button onclick="p('p1.html')">Page 1</button>
+    <button onclick="p('p2.html')">Page 2</button>
+    <button onclick="p('p3.html')">Page 3</button>
+    <button onclick="p('p4.html')">Page 4</button>
+    <button onclick="p('p5.html')">Page 5</button>
+    <button onclick="p('p6.html')">Page 6</button>
     <hr>
-    <p><span id='navig-span'></span></p>
+
+    <!-- Ici la zone d'affichage de la page choisie -->
+    <p><div id='view_div'></div></p>
     <hr>
     <p>Mais, on arrive quand même vite à la fin.<br>A bientôt !</p>
 

@@ -1,32 +1,21 @@
 // *** code.js ***
 // Ici c'est la place du code Javascript!
 
-function p1()
+function p(s)
 {
-    var span = document.getElementById('navig-span');
-    span.innerHTML = "P1"
-}
+    var xmlHttp = new XMLHttpRequest();
 
-function p2()
-{
-    var span = document.getElementById('navig-span');
-    span.innerHTML = "P2"
-}
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            view_div.innerHTML = xmlHttp.responseText;
+        }
+        else
+        {
+            view_div.innerHTML = "..."
+        }
+    };
 
-function p3()
-{
-    var span = document.getElementById('navig-span');
-    span.innerHTML = "P3"
-}
-
-function p4()
-{
-    var span = document.getElementById('navig-span');
-    span.innerHTML = "P4"
-}
-
-function p5()
-{
-    var span = document.getElementById('navig-span');
-    span.innerHTML = "P5"
+    xmlHttp.open("GET", s, true);
+    xmlHttp.send(null);
 }
