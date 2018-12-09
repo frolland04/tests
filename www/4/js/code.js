@@ -1,7 +1,7 @@
 // *** code.js ***
 // Ici c'est la place du code Javascript!
 
-function p(s)
+function view(s)
 {
     var xmlHttp = new XMLHttpRequest();
 
