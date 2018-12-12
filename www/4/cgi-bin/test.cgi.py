@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
-# -----------------------------------------------------------
-# Exemple d'une 'cgi' en Python
+# -------------------------------------------------
+# Exemple d'une 'cgi' en Python, 100% fait main :-)
+# -------------------------------------------------
 
 if __name__ == "__main__":
     print('Content-type: text/html; charset=UTF-8\n\n')
