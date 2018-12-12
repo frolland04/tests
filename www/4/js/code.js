@@ -3,12 +3,14 @@
 
 function view(s)
 {
-    var xmlHttp = new XMLHttpRequest();
+    // Async. HTTP
+    var httpReq = new XMLHttpRequest();
 
-    xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+    httpReq.onreadystatechange = function()
+    {
+        if (httpReq.readyState == 4 && httpReq.status == 200)
         {
-            view_div.innerHTML = xmlHttp.responseText;
+            view_div.innerHTML = httpReq.responseText;
         }
         else
         {
@@ -16,6 +18,6 @@ function view(s)
         }
     };
 
-    xmlHttp.open("GET", s, true);
-    xmlHttp.send(null);
+    httpReq.open("GET", s, true);
+    httpReq.send(null);
 }
