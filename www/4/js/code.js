@@ -3,7 +3,7 @@
 
 function view(s)
 {
-    // Async. HTTP
+    // Async. HTTP depuis le Javascript...
     var httpReq = new XMLHttpRequest();
 
     httpReq.onreadystatechange = function()

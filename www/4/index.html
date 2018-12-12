@@ -13,14 +13,17 @@
 
     <!-- Ici les boutons du menu intégré -->
     <hr>
+    <!-- Les pages du dossier local -->
     <button id="b1" onclick="view('p1.html')">Page 1</button>
     <button id="b2" onclick="view('p2.html')">Page 2</button>
     <button id="b3" onclick="view('p3.html')">Page 3</button>
     <button id="b4" onclick="view('p4.html')">Page 4</button>
     <button id="b5" onclick="view('p5.html')">Page 5</button>
     <button id="b6" onclick="view('p6.html')">Page 6 (NE)</button>
+    <!-- Les pages d'un sous dossier -->
     <button id="b7" onclick="view('sub/p7.html')">Page 7 (SS)</button>
-    <button id="b8" onclick="view('cgi-bin/p8.cgi.py')">Page 8 (CGI)</button>
+    <!-- Et même un CGI (dossier spécial CGI du webserver!) -->
+    <button id="b8" onclick="view('/cgi-bin/p8.cgi')">Page 8 (CGI)</button>
     <hr>
 
     <!-- Ici la zone d'affichage de la page choisie -->
