@@ -28,3 +28,8 @@ table, th, td
     border-collapse: collapse;
     padding: 10px;
 }
+
+table tr:nth-child(2n+1)
+{
+    background-color: #DDD;
+}
