@@ -82,7 +82,7 @@ if __name__ == '__main__':
     print('Avant: aa=', aa)  # Plusieurs choses à afficher
     print('Avant: aa=' + str(aa))  # Concaténation de chaînes de caractères
 
-    # Appels de fonctions sur immuables
+    # Appels de fonctions sur immuables (nombres, chaînes, tuples)
     print(ma_fonction(a=aa))
     print(ma_fonction())
 
