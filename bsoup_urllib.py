@@ -1,19 +1,30 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 
-# python -m pip install --upgrade pip
-# python -m pip install --upgrade BeautifulSoup4
+"""
+Quelques trucs sympas avec BeautifulSoup4 et Urllib
+"""
 
-from bs4 import BeautifulSoup
+# Quelques informations
+__author__ = 'Frédéric ROLLAND'
+__version__ = '1'
+
+# Dépendances
+from bs4 import BeautifulSoup  # python -m pip install --upgrade BeautifulSoup4
 import urllib.request
 import urllib.error
 import re
-import os, glob
+import os
+import glob
 import browser_cookie3
 import wget  # DEBUG!
 
 
 def fouine(a, links):
-    """Contacte et fouine dans l'URL web passée en 1er paramètre, rajoute dans le conteneur passé en 2ème paramètre
-    les URLs des balises HTML 'href' renvoyées dans la réponse par le serveur web que l'on contacte"""
+    """
+    Contacte et fouine dans l'URL web passée en 1er paramètre, rajoute dans le conteneur passé en 2ème paramètre
+    les URLs des balises HTML 'href' renvoyées dans la réponse par le serveur web que l'on contacte
+    """
     try:
         # Contacte le serveur avec urllib et attend la réponse
         html_page = urllib.request.urlopen(a)

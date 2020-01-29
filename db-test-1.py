@@ -1,6 +1,13 @@
-#! python3
-
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
+
+"""
+Quelques trucs sympas avec BeautifulSoup4 et Urllib
+"""
+
+# Quelques informations
+__author__ = 'Frédéric ROLLAND'
+__version__ = '1'
 
 # Dépendances
 import MySQLdb  # Besoin de "mysqlclient"

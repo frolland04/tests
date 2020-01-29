@@ -1,3 +1,15 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+"""
+Quelques essais avec le framework web Flask.
+"""
+
+# Quelques informations
+__author__ = 'Frédéric ROLLAND'
+__version__ = '1'
+
+# Dépendances
 import flask
 import flask_bootstrap
 

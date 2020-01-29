@@ -1,14 +1,18 @@
-"""Quelques tests de formatage en Python.
-Je les mets sous forme de programme pour s'en souvenir facilement
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 """
-
-import sys
-import datetime
-
+Quelques tests de formatage en Python.
+Je les mets sous forme de programme pour s'en souvenir facilement.
+"""
 
 # Quelques informations
 __author__ = 'Frédéric ROLLAND'
 __version__ = '1'
+
+# Dépendances
+import sys
+import datetime
 
 
 if __name__ == '__main__':

@@ -1,13 +1,16 @@
-"""Quelques tests basiques en Python.
-Je les mets sous forme de programme pour s'en souvenir facilement
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+"""
+Quelques tests basiques en Python.
+Je les mets sous forme de programme pour s'en souvenir facilement.
 """
 
 # Quelques informations
 __author__ = 'Frédéric ROLLAND'
 __version__ = '1'
 
-
-# Importations
+# Dépendances
 import sys
 import time
 
@@ -158,3 +161,4 @@ if __name__ == '__main__':
         print(t, tokens.count(t), '/', len(tokens))
 
     print("*** C'est fini pour aujourd'hui ! ***")
+    sys.exit(0)
