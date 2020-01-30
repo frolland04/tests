@@ -20,20 +20,17 @@ class BigTest:
         self.instance_id = instance_id
         self.normal_exit_func = None
         self.unexpected_exit_func = None
+        self.unexpected_exit_suppress_exc = True
 
     def __del__(self):
         print('BigTest', '__del__()', self.instance_id)
 
-    def stuff(self, exc=None):
-        print('BigTest', 'stuff', self.instance_id, exc)
-        if exc is not None:
-            raise exc
-
     def register_normal_exit_func(self, func):
         self.normal_exit_func = func
 
-    def register_unexpected_exit_func(self, func):
+    def register_unexpected_exit_func(self, func, suppress_exc=True):
         self.unexpected_exit_func = func
+        self.unexpected_exit_suppress_exc = suppress_exc
 
     def __enter__(self):
         print('BigTest', '__enter__()', self.instance_id)
@@ -41,12 +38,12 @@ class BigTest:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         print('BigTest', '__exit__()', self.instance_id, exc_type, exc_val, exc_tb)
-        if exc_val is None and self.normal_exit_func:
+        if exc_val is None and self.normal_exit_func is not None:
             self.normal_exit_func()
         else:
-            if exc_val is not None and self.unexpected_exit_func:
+            if exc_val is not None and self.unexpected_exit_func is not None:
                 self.unexpected_exit_func()
-        return True
+        return self.unexpected_exit_suppress_exc
 
 
 def destroy_notification():
@@ -60,9 +57,11 @@ def release_notification():
 if __name__ == '__main__':
     print('coucou les gens !')
 
+    print('plain sequence of object creation...')
     a = BigTest('a')
     b = BigTest('b')
 
+    print('hierarchical contexts of object creation...')
     with BigTest('c') as c:
         print('c?')
 
@@ -75,18 +74,16 @@ if __name__ == '__main__':
                 with BigTest('z') as z:
                     z.register_normal_exit_func(release_notification)
                     z.register_unexpected_exit_func(destroy_notification)
+                    raise SystemExit
 
+    print('collapsed contexts of object creation...')
     with BigTest('f') as f, BigTest('g') as g:
         print('f,g?')
         f.register_normal_exit_func(release_notification)
-        f.register_unexpected_exit_func(destroy_notification)
+        f.register_unexpected_exit_func(destroy_notification, True)
         g.register_normal_exit_func(release_notification)
-        g.register_unexpected_exit_func(destroy_notification)
+        g.register_unexpected_exit_func(destroy_notification, False)
+        raise KeyboardInterrupt
 
-        f.stuff()
-        f.stuff(KeyboardInterrupt)
-
-        g.stuff()
-        # g.stuff(SystemExit)
-
+    print('end of scope...')
     sys.exit(0)
