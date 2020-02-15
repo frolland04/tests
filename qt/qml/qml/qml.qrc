@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Mycontrol.qml</file>
+    </qresource>
+</RCC>
