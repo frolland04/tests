@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ConnectedControlsPanel.qml</file>
+        <file>ConnectedText.qml</file>
+        <file>LoggingBox.qml</file>
+        <file>ajax.js</file>
+    </qresource>
+</RCC>
