@@ -21,7 +21,7 @@ Grid
         {
             log.send("1!");
 
-            Ajax.ajax_restapi_get_json('http://jsonplaceholder.typicode.com/posts/1', function(obj) {
+            Ajax.ajax_restapi_get_json('http://localhost:8001', function(obj) {
                 log.send("1!!");
                 text = obj.title;
             });
