@@ -1,7 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Window 2.3
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.1
+import QtQuick.Controls 2.2
 
 import "ajax.js" as Ajax
 
