@@ -3,7 +3,7 @@ import QtQuick.Window 2.3
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.2
 
-import "ajax.js" as Ajax
+import "ajax.js" as Tbx
 
 
 Grid
@@ -21,9 +21,9 @@ Grid
         {
             log.send("1!");
 
-            Ajax.ajax_restapi_get_json('http://localhost:8001', function(obj) {
+            Tbx.ajax_get_json('http://localhost:8001', function(obj) {
                 log.send("1!!");
-                text = obj.title;
+                if (obj.title) text = obj.title;
             });
         }
     }

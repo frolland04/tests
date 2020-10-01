@@ -2,18 +2,20 @@
 // **** à la mode 'AJAX' => on interroge une API HTTP 'REST' ****
 // **************************************************************
 
-function ajax_restapi_get_json(url, callback)
+function ajax_get_json(url, callback)
 {
     log.send("Requesting HTTP GET: " + url + "...");
 
     var http = new XMLHttpRequest();
 
-    http.onreadystatechange = function () {
-        log.send("[XHR]!" + " " + url + " " + http.readyState + " " + http.status + "...")
+    http.onreadystatechange = function ()
+    {
+        log.send("[XHR]!" + " " + url + " " + http.readyState);
+
         if (http.readyState === http.DONE && http.status === 200)
         {
             var obj = JSON.parse(http.responseText);
-            for(var jsn in obj) log.send(jsn + ": " + obj[jsn]);
+            for (var jsn in obj) log.send(jsn + ": " + obj[jsn]);
 
             callback(obj)
         }
@@ -26,7 +28,7 @@ function ajax_restapi_get_json(url, callback)
     http.send();
 }
 
-function ajax_restapi_post_json(url, params)
+function ajax_post_json(url, params)
 {
     log.send("Requesting HTTP POST: " + url + "...");
 
