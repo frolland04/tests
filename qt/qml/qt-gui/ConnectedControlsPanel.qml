@@ -47,17 +47,21 @@ Grid
     
     ConnectedText
     {
+        id: item3
         color: "red"
         text: "3"
-/*
+
         WebSocket
         {
             id: socket
             url: "ws://localhost:8000"
+            active: true
 
             onTextMessageReceived:
             {
-                log.send("[WS] Receiving: " + message);
+                //log.send("[WS] Receiving: " + message);
+                var obj = JSON.parse(message);
+                item3.text = obj.value
             }
 
             onStatusChanged:
@@ -72,24 +76,27 @@ Grid
                 }
                 else if (socket.status == WebSocket.Open)
                 {
-                    socket.sendTextMessage('{ query: "Hello World!" }');
+                    log.send("[WS] Opened.");
+                    socket.sendTextMessage('{ "value": 5000 }');
                 }
                 else if (socket.status == WebSocket.Closing)
                 {
-                    log.send("[WS] Closed.");
+                    log.send("[WS] Closing...");
                 }
                 else if (socket.status == WebSocket.Closed)
                 {
                     log.send("[WS] Closed.");
                 }
             }
-        }*/
+        }
     }
-    
-    ConnectedText
+
+    ConnectedButton
     {
-        color: "blue"
-        text: "4"
+        id: reset_button
+        button_name: "RESET_CMD"
+        button_text: "4"
+        onClicked: socket.sendTextMessage('{ "value": 0 }');
     }
     
     ConnectedText
