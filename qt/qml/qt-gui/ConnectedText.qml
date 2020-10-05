@@ -11,7 +11,7 @@ Rectangle
     property string text: "1"
     property string name: "..."
 
-    width: 300 ; height: 30
+    width: 300 ; height: 60
 
     Text
     {
