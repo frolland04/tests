@@ -16,17 +16,18 @@ import time
 
 
 # Quelques fonctions
-def ma_fonction(a=0):
+def ma_fonction(pa=0):
     """Petite fonction gentille"""
-    a += 1
-    return "ma_fonction: " + 'Et oui!' + ' a=' + str(a) + ' (je ne peux pas modifier l\'argument effectif si c\'est un immuable)'
+    pa += 1
+    return "ma_fonction: " + 'Et oui!' + ' pa=' + str(
+        pa) + ' (je ne peux pas modifier l\'argument effectif si c\'est un immuable)'
 
 
-def seconde_fonction(a=[]):
+def seconde_fonction(pa=[]):
     """Petite fonction encore plus gentille"""
-    a.append(1000)
-    a.append('Les listes ne sont pas immuables, les listes en argument sont donc modifiables')
-    return a
+    pa.append(1000)
+    pa.append('Les listes ne sont pas immuables, les listes en argument sont donc modifiables')
+    return pa
 
 
 def jeu_parametres(*arguments) -> None:
@@ -42,18 +43,19 @@ def jeu_parametres(*arguments) -> None:
     return
 
 
-def coucou(ss, j=0) -> str:
+def coucou(pss, pj=0) -> str:
     """Fonction basique qui retourne une chaîne de caractères formées par 'La phrase ... coucou ...'
-    et la chaîne 'ss' et l'entier j passés en arguments. Les types sont vérifiés.
+    et la chaîne 'pss' et l'entier 'pj' passés en arguments. Les types sont vérifiés.
     """
-    if type(ss) is str and type(j) is int:
-        return "La phrase pour {0} est: 'coucou {0}, comment ça va?' ({1})".format(ss, j)
+    if type(pss) is str and type(pj) is int:
+        return "La phrase pour {0} est: 'coucou {0}, comment ça va?' ({1})".format(pss, pj)
     else:
         return 'KO'
 
 
 def enter_exit(f):
     """Un petit décorateur de fonction"""
+
     def wrapper(*args):
         """
         La fonction wrapper est interne à enter_exit()
@@ -63,6 +65,7 @@ def enter_exit(f):
         obj = f(*args)
         print('EXIT <=', f.__name__, ':', obj, type(obj))
         return obj
+
     return wrapper
 
 
@@ -86,7 +89,7 @@ if __name__ == '__main__':
     print('Avant: aa=' + str(aa))  # Concaténation de chaînes de caractères
 
     # Appels de fonctions sur immuables (nombres, chaînes, tuples)
-    print(ma_fonction(a=aa))
+    print(ma_fonction(pa=aa))
     print(ma_fonction())
 
     print('Après: aa=' + str(aa))  # immuable 'aa' non modifié par 'ma_fonction()' ! (nombres, chaînes, tuples)
@@ -115,7 +118,7 @@ if __name__ == '__main__':
     # Jouons aussi avec les listes (non immuables)
     aaa = [2, "oui"]
     print('aaa=', aaa)
-    print('retour ->', seconde_fonction(a=aaa))  # liste 'aaa' modifiée par la fonction !
+    print('retour ->', seconde_fonction(pa=aaa))  # liste 'aaa' modifiée par la fonction !
     print('aaa=', aaa)
     for i, e in enumerate(aaa):  # Enumérer les éléments d'une liste
         print(i, '->', e)
