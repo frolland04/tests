@@ -1,0 +1,39 @@
+# https://python.developpez.com/tutoriel/intro-flask-python3/
+
+# -- Etape 1
+mkdir -p test-flask/venv
+cd test-flask/
+sudo apt-get install python3-pip
+sudo apt-get install python3-venv
+python3 -m venv ./venv/
+. venv/bin/activate
+python -c "import flask; print(flask.__version__)"
+pip install flask
+python -c "import flask; print(flask.__version__)"
+
+# -- Etape 2
+export FLASK_APP=hello
+export FLASK_ENV=development
+export FLASK_HOST=172.24.64.150
+export FLASK_PORT=8000
+flask run --host=$FLASK_HOST --port=$FLASK_PORT
+
+# -- Etape 3 : Utiliser des modèles HTML (sans, puis avec Bootstrap + Jinja)
+export FLASK_APP=app-1
+flask run --host=$FLASK_HOST --port=$FLASK_PORT
+
+export FLASK_APP=app-2
+flask run --host=$FLASK_HOST --port=$FLASK_PORT
+
+# -- Etape 4/5 : Mettre en place la base de données + afficher tous les articles
+python3 init_db.py
+export FLASK_APP=app-3
+flask run --host=$FLASK_HOST --port=$FLASK_PORT
+
+# -- Etape 6 : Afficher un article unique
+export FLASK_APP=app-4
+flask run --host=$FLASK_HOST --port=$FLASK_PORT
+
+# -- Étape 7 : Modifier des articles
+export FLASK_APP=app-5
+flask run --host=$FLASK_HOST --port=$FLASK_PORT

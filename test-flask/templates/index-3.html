@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome ! {% endblock %}</h1>
+    {% for jmsg in jmsgs %}
+        <a href="#">
+            <h2>{{ jmsg['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ jmsg['created'] }}</span>
+        <hr>
+    {% endfor %}
+{% endblock %}

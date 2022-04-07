@@ -1,0 +1,7 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ jmsg['title'] }} {% endblock %}</h2>
+    <span class="badge badge-primary">{{ jmsg['created'] }}</span>
+    <p>{{ jmsg['content'] }}</p>
+{% endblock %}
