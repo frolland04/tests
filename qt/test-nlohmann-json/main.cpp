@@ -5,11 +5,11 @@
 #include <QVariant>
 #include <QDateTime>
 
-#include "json.hpp"
+#include "nlohmann/json.hpp"
 #include <iostream>
 
 
-int main(int argc, char *argv[])
+int main(int, char **)
 {
     qDebug() << __PRETTY_FUNCTION__ << __cplusplus << "COUCOU!" ;
 

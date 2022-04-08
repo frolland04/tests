@@ -1,3 +1,6 @@
 [submodule "qt/qrcode-qml/qzxing"]
 	path = qt/qrcode-qml/qzxing
 	url = https://github.com/ftylitak/qzxing.git
+[submodule "qt/test-nlohmann-json/nlohmann-json"]
+	path = qt/test-nlohmann-json/nlohmann-json
+	url = https://github.com/nlohmann/json.git
