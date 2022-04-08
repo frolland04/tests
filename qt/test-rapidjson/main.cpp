@@ -10,7 +10,7 @@
 #include "rapidjson/prettywriter.h"
 
 
-int main(int argc, char *argv[])
+int main(int, char **)
 {
     qDebug() << __PRETTY_FUNCTION__ << __cplusplus << "COUCOU!" ;
 

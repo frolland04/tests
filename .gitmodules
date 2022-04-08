@@ -4,3 +4,6 @@
 [submodule "qt/test-nlohmann-json/nlohmann-json"]
 	path = qt/test-nlohmann-json/nlohmann-json
 	url = https://github.com/nlohmann/json.git
+[submodule "qt/test-rapidjson/rapidjson"]
+	path = qt/test-rapidjson/rapidjson
+	url = https://github.com/Tencent/rapidjson.git
