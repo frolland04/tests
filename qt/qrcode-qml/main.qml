@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
 
-import QZXing 3.1
+import QZXing 3.3
 
 
 Window
