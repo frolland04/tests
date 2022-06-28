@@ -3,9 +3,12 @@
 #include <QThread>
 
 
-MyImageProvider::MyImageProvider(QObject * parent)
-    : QQuickImageProvider{ QQmlImageProviderBase::Image }
+MyImageProvider::MyImageProvider(QObject * parent) :
+    QQuickImageProvider{ QQmlImageProviderBase::Image },
+    m_last_image()
 {
+    qDebug() << __PRETTY_FUNCTION__ ;
+
     setParent(parent);
 
     QThread* thread = new QThread();
@@ -13,7 +16,14 @@ MyImageProvider::MyImageProvider(QObject * parent)
     worker->moveToThread(thread);
 
     connect( thread, &QThread::started, worker, &Worker::process);
-    connect( worker, &Worker::new_result_available, this, &MyImageProvider::new_result_available); // signal to signal
+    connect( worker,
+            &Worker::new_result_available,
+            [=]( const QImage & qi )
+            {
+                m_last_image = qi;
+                emit new_result_available();
+            }
+    );
 
     connect( worker, &Worker::finished,  thread, &QThread::quit);
     connect( worker, &Worker::finished,  worker, &Worker::deleteLater);
@@ -23,34 +33,15 @@ MyImageProvider::MyImageProvider(QObject * parent)
 }
 
 
+MyImageProvider::~MyImageProvider()
+{
+    qDebug() << __PRETTY_FUNCTION__ ;
+}
+
+
 QImage MyImageProvider::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
 {
-    qDebug() << __PRETTY_FUNCTION__ << id << requestedSize << std::rand();
+    qDebug() << __PRETTY_FUNCTION__ << id << requestedSize ;
 
-    QImage image(400, 500, QImage::Format_RGB888);
-
-    QColor c;
-    QList<Qt::GlobalColor> cl { Qt::white,
-                                Qt::black,
-                                Qt::red,
-                                Qt::darkRed,
-                                Qt::green,
-                                Qt::darkGreen,
-                                Qt::blue,
-                                Qt::darkBlue,
-                                Qt::cyan,
-                                Qt::darkCyan,
-                                Qt::magenta,
-                                Qt::darkMagenta,
-                                Qt::yellow,
-                                Qt::darkYellow,
-                                Qt::gray,
-                                Qt::darkGray,
-                                Qt::lightGray };
-
-    int i = cl.size() * std::rand() / RAND_MAX;
-    c = cl.at(i);
-    image.fill(c);
-
-    return image;
+    return m_last_image;
 }
