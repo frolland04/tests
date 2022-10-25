@@ -15,9 +15,21 @@
 // Spdlog Package
 #include "spdlog/spdlog.h"
 
+// JSON for Modern C++
+#include "json/include/nlohmann/json.hpp"
+
+// Libcpr Package
+#include <cpr/cpr.h>
+
+
+void horiz_break()
+{
+    std::cout << "+++++++++++++++++++++++++++++++++++++++++" << std::endl;
+}
 
 void test_cppzmq()
 {
+    horiz_break();
     zmq::context_t ctx;
 
     zmq::socket_t sock_s(ctx, zmq::socket_type::rep);
@@ -34,6 +46,7 @@ void test_cppzmq()
 
 void test_boost()
 {
+    horiz_break();
     boost::locale::generator gen;
     std::locale loc = gen("");
     std::locale::global(loc);
@@ -44,6 +57,8 @@ void test_boost()
 
 void test_nmea()
 {
+    horiz_break();
+    std::cout << "(libnmea)" << std::endl;
     char sentence[] = "$GPGLL,4916.45,N,12311.12,W,225444,A,*1D\r\n";
     std::cout << "sentence is " << (nmea_validate(sentence, strlen(sentence), 1)== 0 ? "valid." : "not valid." ) << std::endl;
     nmea_s * data = nmea_parse(sentence, strlen(sentence), 1);
@@ -69,16 +84,45 @@ void test_nmea()
 
 void test_spdlog()
 {
+    horiz_break();
     spdlog::info("(spdlog) HELLO WORLD!");
+}
+
+void test_json()
+{
+    horiz_break();
+    nlohmann::json j;
+    j["json_message"] = "HELLO WORLD!";
+    j["pi"] = 3.1415;
+    std::cout << j << std::endl;
+}
+
+void test_libcpr()
+{
+    horiz_break();
+    char url[] = "https://api.github.com/repos/libcpr/cpr/contributors";
+    std::cout << "(libcpr) GET " << url << std::endl;
+    cpr::Response r = cpr::Get(cpr::Url{url},
+                      cpr::Authentication{"user", "pass", cpr::AuthMode::BASIC},
+                      cpr::Parameters{{"anon", "true"}, {"key", "value"}});
+    std::cout << r.status_code << std::endl;
+    std::cout << r.header["content-type"] << std::endl;
+    std::cout << r.text.size() << std::endl;
 }
 
 int main(int argc, char** argv)
 {
+    horiz_break();
     std::cout << "(std) HELLO WORLD!" << std::endl;
+
     test_boost();
     test_cppzmq();
     test_nmea();
     test_spdlog();
+    test_json();
+    test_libcpr();
+
+    horiz_break();
     return 0;
 }
 

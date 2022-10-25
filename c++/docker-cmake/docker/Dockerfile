@@ -28,18 +28,51 @@ RUN groupadd -g $GID build && useradd -p UZu.giVcrobhI -G sudo,build -u $UID dev
 
 RUN mkdir -p /home/devel && cd /home/devel && chown -R devel:build . && chmod g+w .
 
-# Dev tooling packages
+# Dev toolchaining packages
 RUN apt-get install -y \
     qtcreator \
     meld \
     doxygen \
     gedit
     
-# Dev third-party packages
+# Dev third-party packages : Boost
 RUN apt-get install -y \
     libboost-all-dev \
     libboost-doc
 
+# Dev third-party packages : Cppzmq / Libzmq
+RUN cd /tmp && \
+    rm -rf libzmq && \
+    git clone https://github.com/zeromq/libzmq && \
+    cd libzmq && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make -j4 install
+    
+RUN cd /tmp && \
+    rm -rf cppzmq && \
+    git clone https://github.com/zeromq/cppzmq && \
+    cd cppzmq && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make -j4 install
+
+# Dev third-party packages : Libnmea
+RUN cd /tmp && \
+    rm -rf libnmea && \
+    git clone https://github.com/jacketizer/libnmea && \
+    cd libnmea && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make -j4 install
+    
+# Dev third-party packages : Spdlog
+RUN apt-get install -y \
+    libspdlog-dev
+    
 USER devel
 
 WORKDIR /mnt
