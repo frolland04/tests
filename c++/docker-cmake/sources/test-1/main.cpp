@@ -3,6 +3,9 @@
 
 // Boost Package
 #include <boost/locale.hpp>
+#include <boost/beast.hpp>
+#include <boost/chrono.hpp>
+#include <boost/log/common.hpp>
 
 // Cppzmq Package
 #include <zmq.hpp>
@@ -20,6 +23,46 @@
 
 // Libcpr Package
 #include <cpr/cpr.h>
+
+// SDBus++ Package
+#include <sdbus-c++/sdbus-c++.h>
+
+// BLE++ Package
+/*#include <bluetooth/bluetooth.h>
+#include <bluetooth/hci.h>
+#include <bluetooth/hci_lib.h>
+#include <blepp/logging.h>
+#include <blepp/pretty_printers.h>
+#include <blepp/blestatemachine.h>
+#include <blepp/lescan.h>*/
+
+// Tiny BLE Package
+#include <tinyb.hpp>
+
+// Websocket++ Package
+#include <websocketpp/connection.hpp>
+#include <websocketpp/client.hpp>
+#include <websocketpp/server.hpp>
+
+// CppLinuxSerial Package
+#include <CppLinuxSerial/SerialPort.hpp>
+
+// OpenCV Package
+#include <opencv2/opencv.hpp>
+
+// POCO Package
+#include <Poco/Foundation.h>
+#include "Poco/Net/POP3ClientSession.h"
+#include "Poco/Net/HTTPClientSession.h"
+#include "Poco/Timestamp.h"
+#include "Poco/DateTimeFormatter.h"
+#include "Poco/DateTimeFormat.h"
+#include "Poco/Exception.h"
+#include "Poco/ThreadPool.h"
+#include "Poco/Util/ServerApplication.h"
+#include "Poco/Util/Option.h"
+#include "Poco/Util/OptionSet.h"
+#include "Poco/Util/HelpFormatter.h"
 
 
 void horiz_break()
@@ -110,6 +153,64 @@ void test_libcpr()
     std::cout << r.text.size() << std::endl;
 }
 
+void test_sdbuscpp()
+{
+    horiz_break();
+    std::cout << "(sdbus++)" << std::endl;
+    // Huh ?
+}
+
+void test_blepp()
+{
+    horiz_break();
+    std::cout << "(ble++" << std::endl;
+    // Huh ?
+}
+
+void test_tinyb()
+{
+    horiz_break();
+    std::cout << "(tinyb)" << std::endl;
+
+    try
+    {
+        tinyb::BluetoothManager * manager = tinyb::BluetoothManager::get_bluetooth_manager();
+    }
+    catch (const std::runtime_error& e)
+    {
+        std::cout << "ERROR: " << e.what() << std::endl;
+    }
+}
+
+void test_websocketpp()
+{
+    horiz_break();
+    std::cout << "(websocket++)" << std::endl;
+    // Huh ?
+}
+
+void test_cppserial()
+{
+    horiz_break();
+    std::cout << "(cppserial)" << std::endl;
+    // Huh ?
+}
+
+void test_opencv()
+{
+    horiz_break();
+    std::cout << "(opencv)" << std::endl;
+    // Huh ?
+}
+
+void test_poco()
+{
+    horiz_break();
+    std::cout << "(poco)" << std::endl;
+    // Huh ?
+}
+
+
 int main(int argc, char** argv)
 {
     horiz_break();
@@ -121,6 +222,13 @@ int main(int argc, char** argv)
     test_spdlog();
     test_json();
     test_libcpr();
+    test_sdbuscpp();
+    test_blepp();
+    test_tinyb();
+    test_websocketpp();
+    test_cppserial();
+    test_opencv();
+    test_poco();
 
     horiz_break();
     return 0;
