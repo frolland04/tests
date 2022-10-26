@@ -6,6 +6,7 @@
 #include <boost/beast.hpp>
 #include <boost/chrono.hpp>
 #include <boost/log/common.hpp>
+#include <boost/asio/serial_port.hpp>
 
 // Cppzmq Package
 #include <zmq.hpp>
