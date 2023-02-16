@@ -1,14 +1,16 @@
 #!/bin/bash
 
-GID=`id -g`
-IMAGE_NAME=dev
+P_UID=`id -u`
+P_GID=`id -g`
+
+IMAGE_NAME=dev-cpp
 
 echo "Building Docker image $IMAGE_NAME ..."
 
 DIR_ROOT=`dirname $(readlink -f $0)`
 
 cd $DIR_ROOT
-docker build -t $IMAGE_NAME --build-arg UID=$UID --build-arg GID=$GID .
+docker build -t $IMAGE_NAME --build-arg UID=$P_UID --build-arg GID=$P_GID .
 
 echo "FINISHED."
 cd -

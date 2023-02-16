@@ -45,8 +45,11 @@ FIND_PACKAGE(OpenCV REQUIRED)
 # Get the package info for Poco
 FIND_PACKAGE(Poco REQUIRED Zip JSON Util Net XML)
 
+# Get package info for LMDB++
+FIND_LIBRARY(lmdb NAME lmdb REQUIRED)
+
 # Set the target info
 ADD_EXECUTABLE(hello_world main.cpp)
-TARGET_LINK_LIBRARIES(hello_world PRIVATE ${Poco_LIBRARIES} ${OpenCV_LIBRARIES} CppLinuxSerial tinyb ble++ SDBusCpp::sdbus-c++ cpr nlohmann_json::nlohmann_json spdlog::spdlog ${LIBNMEA_LIBRARIES} cppzmq ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(hello_world PRIVATE ${Poco_LIBRARIES} ${OpenCV_LIBRARIES} CppLinuxSerial tinyb ble++ SDBusCpp::sdbus-c++ cpr nlohmann_json::nlohmann_json spdlog::spdlog ${LIBNMEA_LIBRARIES} cppzmq ${Boost_LIBRARIES} lmdb)
 
 

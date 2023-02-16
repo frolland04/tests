@@ -20,7 +20,7 @@
 #include "spdlog/spdlog.h"
 
 // JSON for Modern C++
-#include "json/include/nlohmann/json.hpp"
+#include "nlohmann/json.hpp"
 
 // Libcpr Package
 #include <cpr/cpr.h>
@@ -46,7 +46,7 @@
 #include <websocketpp/server.hpp>
 
 // CppLinuxSerial Package
-#include <CppLinuxSerial/SerialPort.hpp>
+//#include <CppLinuxSerial/SerialPort.hpp>
 
 // OpenCV Package
 #include <opencv2/opencv.hpp>
@@ -65,11 +65,15 @@
 #include "Poco/Util/OptionSet.h"
 #include "Poco/Util/HelpFormatter.h"
 
+// LMDB++ Package
+#include "lmdb++.h"
+
 
 void horiz_break()
 {
     std::cout << "+++++++++++++++++++++++++++++++++++++++++" << std::endl;
 }
+
 
 void test_cppzmq()
 {
@@ -88,6 +92,7 @@ void test_cppzmq()
     std::cout << "(zmq) Received : " << request.to_string() << std::endl;
 }
 
+
 void test_boost()
 {
     horiz_break();
@@ -98,6 +103,7 @@ void test_boost()
 
     std::cout << "(boost) This is upper case : " << boost::locale::to_upper("Hello World!") << std::endl;
 }
+
 
 void test_nmea()
 {
@@ -126,11 +132,13 @@ void test_nmea()
     }
 }
 
+
 void test_spdlog()
 {
     horiz_break();
     spdlog::info("(spdlog) HELLO WORLD!");
 }
+
 
 void test_json()
 {
@@ -140,6 +148,7 @@ void test_json()
     j["pi"] = 3.1415;
     std::cout << j << std::endl;
 }
+
 
 void test_libcpr()
 {
@@ -154,6 +163,7 @@ void test_libcpr()
     std::cout << r.text.size() << std::endl;
 }
 
+
 void test_sdbuscpp()
 {
     horiz_break();
@@ -161,12 +171,14 @@ void test_sdbuscpp()
     // Huh ?
 }
 
+
 void test_blepp()
 {
     horiz_break();
     std::cout << "(ble++" << std::endl;
     // Huh ?
 }
+
 
 void test_tinyb()
 {
@@ -183,6 +195,7 @@ void test_tinyb()
     }
 }
 
+
 void test_websocketpp()
 {
     horiz_break();
@@ -190,12 +203,14 @@ void test_websocketpp()
     // Huh ?
 }
 
+
 void test_cppserial()
 {
     horiz_break();
     std::cout << "(cppserial)" << std::endl;
     // Huh ?
 }
+
 
 void test_opencv()
 {
@@ -209,6 +224,49 @@ void test_poco()
     horiz_break();
     std::cout << "(poco)" << std::endl;
     // Huh ?
+}
+
+
+void test_lmdb()
+{
+    horiz_break();
+    std::cout << "(lmdb)" << std::endl;
+
+    // In order to run this example, you must first manually create the ./example.mdb directory.
+    // This is a basic characteristic of LMDB : the given environment path must already exist,
+    // as LMDB will not attempt to automatically create it.
+    struct stat st = {0};
+
+    if (stat("./example.mdb", &st) == -1) {
+        mkdir("./example.mdb", 0700);
+    }
+
+    // Create and open the LMDB environment
+    auto env = lmdb::env::create();
+    env.open("./example.mdb", 0, 0664);
+
+    // Insert some key/value pairs in a write transaction
+    auto wtxn = lmdb::txn::begin(env);
+    auto dbi = lmdb::dbi::open(wtxn, nullptr);
+    dbi.put(wtxn, "username", "jhacker");
+    dbi.put(wtxn, "email", "jhacker@example.org");
+    dbi.put(wtxn, "fullname", "J. Random Hacker");
+    wtxn.commit();
+
+    // Fetch key/value pairs in a read-only transaction
+    auto rtxn = lmdb::txn::begin(env, nullptr, MDB_RDONLY);
+    auto cursor = lmdb::cursor::open(rtxn, dbi);
+    std::string key, value;
+
+    while (cursor.get(key, value, MDB_NEXT))
+    {
+        std::printf("key: '%s', value: '%s'\n", key.c_str(), value.c_str());
+    }
+
+    cursor.close();
+    rtxn.abort();
+
+    // The environment is closed automatically.
 }
 
 
@@ -230,6 +288,7 @@ int main(int argc, char** argv)
     test_cppserial();
     test_opencv();
     test_poco();
+    test_lmdb();
 
     horiz_break();
     return 0;
