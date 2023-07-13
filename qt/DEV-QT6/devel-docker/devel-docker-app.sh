@@ -23,7 +23,7 @@ fi
 DEVEL_USER="devel"
 if id $DEVEL_USER >/dev/null 2>&1 ; then
     echo $DEVEL_USER
-    su -P -c bash - $DEVEL_USER
+    su -P -c bash $DEVEL_USER
 else
     echo "..."
     bash

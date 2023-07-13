@@ -2,7 +2,7 @@
 
 set -aeu -o pipefail 
 
-IMAGE_NAME="dev-qt6"
+IMAGE_NAME="dev-qtx"
 
 echo "Starting Docker container from '$IMAGE_NAME' ..."
 echo "************************************************"
@@ -33,7 +33,6 @@ docker run --interactive --tty --privileged \
     -v $DEVEL_DIR_H:$DEVEL_DIR_D \
     -v /tmp:/tmp \
     -v /dev:/dev \
-    -v /run:/run \
     -v $DBUS_SESSION_DIR_H:$DBUS_SESSION_DIR_H \
     --env DISPLAY=:0 \
     --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" \
