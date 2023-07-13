@@ -4,7 +4,7 @@
 # --------------------
 #
 
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 # Unless specified something else as arguments, final user is 'devel:build'
 # (defaulted to 10000:10000).
@@ -46,14 +46,19 @@ RUN apt-get install -y \
     heaptrack          \
     clazy              \
     clang-tidy         \
+    clang-format       \
     htop               \
     linux-tools-common \
     sysvbanner         \
     tree               \
     wget               \
     curl               \
+    libcurl4           \
+    libcurl4-openssl-dev \ 
     jq                 \
     p7zip-full         \
+    libarchive-dev     \
+    libarchive-tools   \
     unzip              \
     cpio               \
     xz-utils           \
@@ -78,17 +83,24 @@ RUN apt-get install -y \
     net-tools          \
     traceroute         \
     iperf              \
+    openssl            \
     libssl-dev         \
     sqlite3            \
     libsqlite3-dev     \
     rrdtool            \
     librrd-dev         \
+    nghttp2            \
+    libnghttp2-dev     \
     can-utils          \
     libdbus-1-dev      \
     ccrypt             \
     dos2unix           \
     psmisc             \
-    gpg
+    libgtest-dev       \
+    gpg                \
+    libgcrypt20-dev    \
+    netcat             \
+    fuse
 
 # Set the locale & timezone
 # *************************
@@ -113,7 +125,7 @@ ENV LC_ALL=$LC
 # Accounts
 # ********
 # 'devel' passwd is 'devel'
-RUN groupadd -g $GID build && useradd -p UZu.giVcrobhI -G sudo,build,adm -u $UID devel
+RUN groupadd -g $GID build && useradd -p UZu.giVcrobhI -G sudo,build,adm -u $UID -s /bin/bash devel
 
 RUN mkdir -p /home/devel && cd /home/devel && chown -R devel:build . && chmod g+w .
 
@@ -121,7 +133,9 @@ RUN mkdir -p /home/devel && cd /home/devel && chown -R devel:build . && chmod g+
 # ************************
 RUN apt-get install -y \
     systemd \
-    dbus
+    libsystemd-dev \
+    dbus \
+    libdbus-1-dev 
 
 # Dev tool packages
 # *****************
@@ -139,7 +153,11 @@ RUN apt-get install -y \
     kcachegrind        \
     hotspot            \
     d-feet             \
-    wireshark
+    wireshark          \
+    audacity           \
+    alsa-utils         \
+    pulseaudio         \
+    sox
     
 RUN groupadd wireshark && usermod -a -G wireshark devel
     
@@ -171,10 +189,6 @@ RUN apt-get install -y \
     libglib2.0-dev     \
     python3-gst-1.0
 
-USER devel
-RUN mkdir -p /home/devel/.local/bin
-ENV PATH="${PATH}:/home/devel/.local/bin"
-
 RUN pip3 install --upgrade \
     pip \
     setuptools \
@@ -190,8 +204,10 @@ RUN pip3 install --upgrade \
     mysql.connector \
     dbus-python
 
-USER root
-    
+# Conan builder tool
+# ******************
+RUN pip3 install --upgrade conan==1.59.0
+
 # Dev third-party packages : Boost
 # ********************************
 RUN apt-get install -y \
@@ -367,8 +383,16 @@ RUN apt-get install -y \
 # ********************************
 ENV DEBIAN_FRONTEND=dialog
 RUN apt-get clean
-RUN chmod 777 /opt
 
+USER devel
+RUN mkdir -p /home/devel/.local/bin
+ENV PATH="/home/devel/.local/bin:${PATH}"
+RUN conan profile new default --detect --force && \
+    conan profile update settings.compiler.libcxx=libstdc++11 default
+
+USER root
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+RUN chmod a+w /opt
 WORKDIR /mnt
 
 # Usage :
