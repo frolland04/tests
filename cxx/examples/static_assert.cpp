@@ -11,7 +11,8 @@ consteval int f(int i)
 
 constexpr int g(int i)
 {
-  if consteval {
+  if consteval
+  {
     return f(i);
   }
   else
