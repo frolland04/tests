@@ -20,7 +20,7 @@ private:
         int a{10}, b{20};
         int f() { return a; } // S::a
         int ff(C * p) { return p->a + b; }
-        int gg(S * p) { return a + b; }
+        int gg(S * p) { return p->a + b; }
     };
 
     S s;
