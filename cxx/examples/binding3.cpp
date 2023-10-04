@@ -18,7 +18,8 @@ public:
     void f() override { std::cout << "fY()" << std::endl; }
 };
 
-int main() {
+int main()
+{
     // X obj;    // error, uncreatable "abstract"
     Y y;
     X& x = y; // "seen" as a X
@@ -28,4 +29,6 @@ int main() {
     X* px = &y;
     px->f();  // calls Y::f()
               // using pointer
+
+    return 0;
 }

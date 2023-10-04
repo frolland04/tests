@@ -30,7 +30,8 @@ private:
     double d{0.0};
 };
 
-int main() {
+int main()
+{
     MyDouble d1, d2{}; // default ctor (2)
     d1.set(8.375);
     std::cout << d1 << std::endl;  // d8.375
@@ -39,4 +40,6 @@ int main() {
 
     d2 = d1;         // default assign. (1)
     MyDouble d3{d2}; // default copy    (3)
+
+    return 0;
 }

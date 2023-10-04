@@ -31,7 +31,8 @@ C<S>::C(const S& _id) : id{ "'" + _id + "'" } {
     os << "ctor for string id " << id << std::endl;
 }
 
-int main() {
+int main()
+{
     C<int> c1{0};
     C<S> c2{"c2"};
 

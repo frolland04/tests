@@ -48,4 +48,6 @@ int main()
 
     ff<C>(cc); // OK, f(T)
     ff<D>(cc); // OK, f(T::I)
+
+    return 0;
 }

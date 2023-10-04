@@ -13,7 +13,8 @@ auto ll = [](int i) {
 };
 bool res{ll(2)};
 
-int main() {
+int main()
+{
 
     int a{0}, b{0};
     auto l2{[&a, b](int i) {

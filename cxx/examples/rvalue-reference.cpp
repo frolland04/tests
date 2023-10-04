@@ -9,7 +9,8 @@
 #include <tuple>
 #include <type_traits>
 
-int main() {
+int main()
+{
     int x{2};    // lvalue
     int& rx{x};  // lvalue reference
 
@@ -38,5 +39,5 @@ int main() {
     printf("%d,%d\n", rvr1, rvr2);  // 666, 2
     // again, not possible using lvalue reference
     
-     return 0;
+    return 0;
 }

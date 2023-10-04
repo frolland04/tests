@@ -18,9 +18,12 @@ public:
     void f() { std::cout << "fY()" << std::endl; }
 };
 
-int main() {
+int main()
+{
     Y y;
     X& x = y; // "seen" as a X
     x.f();    // calls X::f()
     y.f();    // calls Y::f()
+
+    return 0;
 }

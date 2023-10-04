@@ -34,7 +34,8 @@ void g() {
     throw UserExc{404};
 }
 
-int main() {
+int main()
+{
     os << "Hello" << std::endl;
 
     try {
@@ -47,4 +48,6 @@ int main() {
     }
 
     os << "World" << std::endl;
+
+    return 0;
 }

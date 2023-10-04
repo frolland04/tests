@@ -145,4 +145,6 @@ int main()
 
     echoclass<void> e;
     e.test();
+
+    return 0;
 }

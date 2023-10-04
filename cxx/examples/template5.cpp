@@ -34,7 +34,7 @@ template class C<std::string>;
 int main()
 {
     C<int> c1{0};
-    C<std:::string> c2{"c2"};
+    C<std::string> c2{std::string{"c2"}};
 
     return 0;
 }

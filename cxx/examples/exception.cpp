@@ -15,10 +15,13 @@
 
 auto & os{std::cout};
 void timestamp() {
-   os << std::chrono::system_clock::now() << std::endl;
+    auto tp{std::chrono::system_clock::now()};
+    auto tm{std::chrono::system_clock::to_time_t(tp)};
+    os << ctime(&tm) << std::endl;
 }
 
-int main() {
+int main()
+{
     os << "Hello" << std::endl;
     timestamp();
 
@@ -32,4 +35,6 @@ int main() {
 
     os << "World" << std::endl;
     timestamp();
+
+    return 0;
 }

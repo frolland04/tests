@@ -30,8 +30,8 @@ struct E {
 };
 
 
-int main() {
-
+int main()
+{
     // Stack
     // *****
 
@@ -85,5 +85,5 @@ int main() {
         // ...
     }
 
-    return 1;
+    return 0;
 }

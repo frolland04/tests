@@ -17,5 +17,6 @@ constexpr int g(int j) {
 int main()
 {
     printf("%d\n", g(5));
+
     return 0;
 }

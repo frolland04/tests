@@ -60,7 +60,8 @@ class MyDouble {
     double d{0.0};
 };
 
-int main() {
+int main()
+{
     MyDouble d1, d2;
     d1.set(8.375);
     std::cout << d1.get() << std::endl;  // 8.375
@@ -91,4 +92,6 @@ int main() {
     std::cout << d2 << std::endl;      // =d5.25
     std::cout << d2 / 2 << std::endl;  // /2
     std::cout << d2 % 2 << std::endl;  // %1.25
+
+    return 0;
 }

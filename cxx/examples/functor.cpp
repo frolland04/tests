@@ -30,7 +30,8 @@ void f(auto _impl)
     return;
 }
 
-int main() {
+int main()
+{
     // f(); // error, need 1 argument
     f(NullImpl);
 
@@ -38,4 +39,6 @@ int main() {
     f(d);   // displays "D"
     f(D{}); // displays "D"
     // ^^ transient instance
+
+    return 0;
 }

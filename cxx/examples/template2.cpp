@@ -25,7 +25,8 @@ void print(const S& s) {
     std::cout << "(S) " << s << std::endl;
 }
 
-int main() {
+int main()
+{
     int j{28};
     print<int>(j); // 28
     print(j);      // 28, ADL + deduction

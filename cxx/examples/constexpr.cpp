@@ -14,6 +14,5 @@ int i{g(10)};
 
 int main()
 {
-    printf("main()\n");
     return 0;
 }

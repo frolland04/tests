@@ -47,7 +47,8 @@ private:
     double d{0.0};
 };
 
-int main() {
+int main()
+{
     MyDouble d1, d2{}; // default ctor (2)
                        // {0}{.}, {0}{.}
     d1.set(8.375);
@@ -63,4 +64,6 @@ int main() {
     MyDouble d4{5.5};              // ctor (2)
                                    // {5.5}
     std::cout << d4 << std::endl;  // d5.5
+
+    return 0;
 }

@@ -17,4 +17,6 @@ public:
 int main() 
 {
     Canary c;
+
+    return 0;
 }

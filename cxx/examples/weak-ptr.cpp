@@ -36,7 +36,8 @@ void g(std::shared_ptr<C>& C){};
 
 auto & os{std::cout};
 
-int main() {
+int main()
+{
     os << "(1)" << std::endl;
 
     std::weak_ptr<C> wp1;
@@ -75,4 +76,6 @@ int main() {
     // del50
     // expired
     // (5)
+
+    return 0;
 }

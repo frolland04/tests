@@ -27,9 +27,10 @@ int main ()
     std::cout << cc1.c << cc2.c; // -1, -1
     cc1.c = 10;
     std::cout << cc1.c << cc2.c; // 10, -1
-    //std::cout << cc1.a; // error, private
+    // std::cout << cc1.a; // error, private
     std::cout << cc1.fa(); // -2
-    //std::cout << cc2.fc(); // error, private
+    // std::cout << cc2.fc(); // error, private
     std::cout << cc2.ff(); // -3
+
     return 0;
 }

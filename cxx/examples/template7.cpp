@@ -29,4 +29,6 @@ int main()
     pointer<int> pi;
 
     pair<int> ii;
+
+    return 0;
 } 

@@ -44,5 +44,6 @@ int main ()
     
     B::reset();
     std::cout << cc.get_a();
+    
     return 0;
 }

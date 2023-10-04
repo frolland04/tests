@@ -65,6 +65,5 @@ int main()
     // invoke a function object
     std::invoke(S(), 18);
 
-
     return 0;
 }

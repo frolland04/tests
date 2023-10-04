@@ -18,11 +18,12 @@ struct Tuple2 {};
 template <class... Ts>
 void f(Ts... args) {};
 
-int main() {
+int main()
+{
     Tuple<> t0;            // OK: no arg
     Tuple<int> t1;         // OK: int
     Tuple<int, float> t2;  // OK: int, float
-    //Tuple<0> t3;         // error, not a type
+    // Tuple<0> t3;        // error, not a type
     Tuple2<0> t4;          // OK, non type value
 
     f();        // OK: no arg

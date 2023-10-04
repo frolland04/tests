@@ -44,12 +44,12 @@ int main()
     D dd;
     // std::cout << dd; // error, not match 'operator<<()'
 
-    //C<D> c3; // error "constraints not satisfied"
+    // C<D> c3; // error "constraints not satisfied"
     // substitution of 'template<class T>  requires
     // OutputStreamCapable<T> struct C [with T = D]':
     // note: the required expression '(os << a)' is invalid
 
-    //C<E> c4; // error "constraints not satisfied"
+    // C<E> c4; // error "constraints not satisfied"
 
     return 0;
 }

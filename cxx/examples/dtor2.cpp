@@ -21,7 +21,7 @@ public:
     }
 
     void write(const std::string & s) {
-        /*if (f.is_open())*/ {
+        if (f.is_open()) {
             std::cout << "Writing '" << s << "' into file '" << name << "'" << std::endl;
             f << s;
         }
@@ -43,4 +43,6 @@ int main()
         MyFile mf2{"2.tmp"};
         mf2.write("auto");
     }
+
+    return 0;
 }

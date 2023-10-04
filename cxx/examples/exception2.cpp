@@ -17,7 +17,8 @@
 
 auto& os{std::cout};
 
-int main() {
+int main()
+{
     os << "Hello" << std::endl;
 
     try {
@@ -43,4 +44,6 @@ int main() {
     }
 
     os << "World" << std::endl;
+
+    return 0;
 }

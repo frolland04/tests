@@ -40,23 +40,23 @@ int main()
     *p1 = 100;
     p1 = &i;
 
-    //*p2 = 200; // error, read-only location
+    // *p2 = 200; // error, read-only location
     p2 = &i;
 
-    //*p3 = 300;
-    //p3 = &i; // error, read-only variable
+    // *p3 = 300;
+    // p3 = &i; // error, read-only variable
 
-    //*p4 = 400; // error
-    //p4 = &i;   // error
+    // *p4 = 400; // error
+    // p4 = &i;   // error
 
     pi = nullptr;
     f(pi);
-    //g(pi); // error, invalid conversion
+    // g(pi); // error, invalid conversion
     
     void (*adds)(int,int) = ff;
-    adds(10, 1); //
+    adds(10, 1);
     void (*minus)(int,int) = gg;
-    minus(10, 1); //
+    minus(10, 1);
 
-    return 2;
+    return 0;
 }

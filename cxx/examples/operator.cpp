@@ -24,6 +24,7 @@ int main ()
 
     double c{15.0};
     std::cout << c / 2; // 7.5
-    //std::cout << c % 2; // error, invalid operands to binary "operator%"
+    // std::cout << c % 2; // error, invalid operands to binary "operator%"
+
     return 0;
 }

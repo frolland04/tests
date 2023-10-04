@@ -37,8 +37,8 @@ struct C<S,U> {
     S id;
 };
 
-int main() {
-
+int main()
+{
     C<int, double> c1{1}; // ctor 1
     C<int, int> c2{2};    // ctor 2 
 

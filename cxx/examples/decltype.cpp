@@ -75,5 +75,5 @@ int main()
 
     static_assert(std::is_function_v<decltype(f)>);
 
-    return 18;
+    return 0;
 }

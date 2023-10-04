@@ -47,4 +47,6 @@ int main()
     std::cout << "Before move, c3.s = \"" << c3.get_name() << "\"\n";
     C c4{std::move(c3)};
     std::cout << "After move, c3.s = \"" << c3.get_name() << "\"\n";
+
+    return 0;
 }

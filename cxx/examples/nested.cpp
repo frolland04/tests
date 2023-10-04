@@ -29,13 +29,12 @@ private:
 
 int main ()
 {  
-
     C cc;
     // S s;    // error, undeclared
     // C::S s; // error, private
     printf("%d", cc.f()); // OK: 9
 
-    //printf("%d", cc.a); // error, private
+    // printf("%d", cc.a); // error, private
     printf("%d", cc.c); // OK: -1
     printf("%d", cc.ff()); // OK: 19
     printf("%d", cc.gg()); // OK: 30

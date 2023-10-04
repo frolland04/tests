@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <string>
 
-//'if consteval is for *functions*
-//(obviously annoted 'constexpr')
+// 'if consteval is for *functions*
+// (obviously annoted 'constexpr')
 
 consteval int f(int i)
 {
@@ -29,22 +29,24 @@ struct my_struct {
 
 constinit const auto i{0};
 int * p{nullptr};
-auto f() {};
+auto f2() {};
 
 static_assert(sizeof(my_struct) > 2); // OK
 static_assert(f(0) == 1); // OK
 static_assert(std::is_constant_evaluated());  // OK
 static_assert(std::is_scalar_v<decltype(i)>); // OK
-//static_assert(std::is_scalar_v<my_struct>);   // error
-//static_assert(std::is_reference_v<decltype(p)>); // error
+// static_assert(std::is_scalar_v<my_struct>);   // error
+// static_assert(std::is_reference_v<decltype(p)>); // error
 static_assert(std::is_pointer_v<decltype(p)>);
-static_assert(std::is_function_v<decltype(f)>);
+static_assert(std::is_function_v<decltype(f2)>);
 
-int main() {
+int main()
+{
     printf("x=%d, g(0)=%d\n", x, g(0));
     // g() not using f(), displays "x=11, g(0)=0"
+
     return 0;
 }
 
-//Note: annotating g() as consteval
-//causes g(0)=1
+// Note: annotating g() as consteval
+// causes g(0)=1

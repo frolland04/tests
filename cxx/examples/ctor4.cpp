@@ -39,7 +39,8 @@ class B : public A {
     void g() { return f(); }
 };
 
-int main() {
+int main()
+{
     // A aa; // default ctor is disabled by A(int)
     A a{1};
     B b{10, 20};
@@ -50,4 +51,6 @@ int main() {
 
     b.g();
     b.f();
+
+    return 0;
 }

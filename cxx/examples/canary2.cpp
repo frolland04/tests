@@ -76,7 +76,8 @@ C process2(const C& _arg)  // "pass-by-reference"
     // "return-by-value", NRVO
 }
 
-int main() {
+int main()
+{
     std::cout << "-1-" << std::endl;
     C c1{"c1"}, c2{"c2"}, c3{"c3"};
 

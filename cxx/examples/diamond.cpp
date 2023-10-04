@@ -41,7 +41,7 @@ int main()
 
     std::cout << l.i << r.i << std::endl;
 
-    //assert(r.i == 1);    // error
+    // assert(r.i == 1);    // error
 
     // *************************************************
 

@@ -37,7 +37,8 @@ void h(C*) {};
 void k(std::shared_ptr<C>& C) {} ;
 void l(std::shared_ptr<C>  C) {} ;
 
-int main() {
+int main()
+{
     std::cout << "(1)" << std::endl;
 
     C c1;      // OK, uses (2)
@@ -100,4 +101,6 @@ int main() {
     // del1
     // del1
     // del0
+
+    return 0;
 }

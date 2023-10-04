@@ -8,7 +8,8 @@ consteval int gg(int j) { return {j * x}; }
 
 static int cc{gg(11)};
 
-int main() {
+int main()
+{
     const int i{5};
     // i = 5; // error, RO variable
 
@@ -16,8 +17,8 @@ int main() {
     // alias_i = 6; // error, RO reference
 
     const int* const pi{&i};
-    // pi = &i; // error, RO variable
-    //*pi = 6;  // error, RO location
+    //  pi = &i; // error, RO variable
+    // *pi = 6;  // error, RO location
 
     static const int j{6};  // longlasting scope
 

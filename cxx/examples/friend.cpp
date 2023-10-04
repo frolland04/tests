@@ -42,5 +42,6 @@ int main ()
     B bb;
     bb.reset(cc);
     std::cout << cc.get_a(); // 0
+    
     return 0;
 }

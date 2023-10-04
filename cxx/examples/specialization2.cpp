@@ -38,7 +38,8 @@ C<S, S, 1>::C(const S& _id) : id{ "'" + _id + "'" }, x{"?"} {
     os << " x=" << "'" << x << "'" << " (v=1)" << std::endl;
 }
 
-int main() {
+int main()
+{
     C<int, double, 1> c1{1}; // ctor 1
     C<int> c2{2};            // ctor 2
     C<S, S, 0> c3{"c3"};     // ctorSS0 id='c3' x='!' (v=0)

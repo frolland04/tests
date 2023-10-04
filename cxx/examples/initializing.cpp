@@ -14,8 +14,8 @@ struct D : public C {
 };
 
 
-int main() {
-
+int main()
+{
     int i{10};
     int & ri{i};
     int * pi{&i};

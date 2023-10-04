@@ -21,7 +21,7 @@ public:
     }
 
     void write(const std::string & s) {
-        /*if (f.is_open())*/ {
+        if (f.is_open()) {
             std::cout << "Writing " << s << std::endl;
             f << s;
         }
@@ -36,4 +36,6 @@ int main()
     MyFile mf;
     mf.write("hello");
     mf.write("world");
+
+    return 0;
 }
