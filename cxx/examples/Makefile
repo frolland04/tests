@@ -10,8 +10,8 @@ all: clean $(EXE)
 	@echo $(EXE)
 
 ${BINDIR}/%.exe: %.cpp
-	g++ -std=c++2b -o $@ $<
+	gcc-14 --std=c++23 -o $@ $< -lstdc++ -lm
 
 clean:
-	#rm -rf ${BINDIR}
+	rm -rf ${BINDIR}
 	mkdir -p ${BINDIR}
