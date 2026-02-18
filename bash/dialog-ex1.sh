@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# ----------------------------------------------------
-# pcp.sh: A shell script to copy files from /etc, and
-#         displays a progress bar while copying files.  
-# ----------------------------------------------------
-
 # Create an array of all files in /etc directory
 DIRS=(/etc/*)
 
@@ -21,17 +16,17 @@ DEST="/tmp/test.$$"
 # Redirect dialog commands input using substitution
 dialog --title "Copy file" --gauge "Copying file ..." 10 75 < <(
    # Get total number of files in array
-   n=${#DIRS[*]}; 
+   n=${#DIRS[*]};
 
    # set counter - it will increase every-time a file is copied to ${DEST}
    i=0
 
    # ------------------
-   # Start the for loop 
+   # Start the for loop
    # ------------------
 
-   # read each file from ${DIRS} array 
-   # using ${FILE} as current filename 
+   # read each file from ${DIRS} array
+   # using ${FILE} as current filename
    for FILE in "${DIRS[@]}"
    do
       # calculate progress
@@ -46,7 +41,7 @@ Please wait, this may take a long time
 XXX
 ${PCT}
 EOF
-  # copy file ${FILE} to ${DEST} 
+  # copy file ${FILE} to ${DEST}
    /bin/cp "${FILE}" "${DEST}" &>/dev/null
    done
 )
